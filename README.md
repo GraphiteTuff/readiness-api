@@ -66,6 +66,18 @@ readiness-api/
 
 ## API Endpoints
 
+## API Documentation
+
+Interactive API documentation is available at:
+
+API Documentation
+https://readiness-api.onrender.com/docs
+
+Live API
+https://readiness-api.onrender.com
+
+Swagger UI allows you to test all endpoints directly from the browser.
+
 ### Health Check
 
 **GET /**
