@@ -88,14 +88,8 @@ Creates a new personnel readiness record.
   "unit": "JBMDL",
   "certification_status": "GREEN"
 }
-esponse
-{
-  "name": "Jason Graff",
-  "unit": "JBMDL",
-  "certification_status": "GREEN"
-}
-
-Requests are validated against a strongly-typed Pydantic schema before processing.
+```
+Requests are validated against a strongly-typed **Pydantic schema** before processing.
 
 Running the Application
 
