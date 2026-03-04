@@ -1,99 +1,128 @@
-**Readiness API**
+# Readiness API
 
-A modular backend service built with FastAPI that models personnel readiness data using schema-driven validation and clean architectural separation.
+A modular backend service built with **FastAPI** that models personnel readiness data using schema-driven validation and clean architectural separation.
 
-This project demonstrates production-oriented backend API design, typed request validation, structured routing, and extensible system design using Python.
+This project demonstrates **production-oriented backend API design**, typed request validation, structured routing, and extensible system design using Python.
 
-Project Purpose
+---
+
+## Project Purpose
 
 Readiness API is a RESTful service designed to manage personnel readiness records in a structured and validated manner.
 
 The system is intentionally built using layered architecture principles to simulate real-world backend engineering patterns used in production environments.
 
-This project focuses on:
+### Key Focus Areas
 
-Clean separation of concerns
+- Clean separation of concerns
+- Strong typing and validation
+- Modular routing design
+- Extensible persistence layer
+- Self-documenting API schemas
 
-Strong typing and validation
+---
 
-Modular routing design
+## Technology Stack
 
-Extensibility toward database-backed persistence
+| Layer | Technology |
+|------|------------|
+| Web Framework | FastAPI |
+| Validation | Pydantic |
+| ASGI Server | Uvicorn |
+| Language | Python 3.12+ |
+| API Documentation | OpenAPI (auto-generated) |
+| Environment | Python Virtual Environment (venv) |
 
-Self-documenting API schemas
+---
 
-Technology Stack
-Layer	Technology
-Web Framework	FastAPI
-Validation	Pydantic
-ASGI Server	Uvicorn
-Language	Python 3.12+
-Documentation	OpenAPI (auto-generated)
-Environment	Virtual Environment (venv)
-Architecture Overview
+## Architecture Overview
 
-The application follows a layered structure separating application configuration, routing, and domain models.
+The application follows a layered architecture separating configuration, routing, and domain models.
 
 readiness-api/
 │
 ├── app/
-│   ├── main.py                # Application entry point
-│   ├── models/
-│   │   └── personnel.py       # Pydantic data models (schema validation)
-│   ├── routes/
-│   │   └── personnel.py       # API route definitions
-│   └── database/              # Future persistence layer
+│ ├── main.py
+│ ├── models/
+│ │ └── personnel.py
+│ ├── routes/
+│ │ └── personnel.py
+│ └── database/
 │
 ├── requirements.txt
 └── README.md
-Design Principles
 
-Separation of concerns
+---
 
-Typed request validation via Pydantic
+## Design Principles
 
-Modular router pattern
+- Separation of concerns
+- Typed request validation via **Pydantic**
+- Modular router pattern
+- Extensible data layer design
+- Self-documenting OpenAPI schema generation
 
-Extensible data layer design
+---
 
-Self-documenting OpenAPI schema generation
+## API Endpoints
 
-API Endpoints
-GET /
+## API Documentation
 
-Health check endpoint.
+Interactive API documentation is available at:
 
-Returns a basic service confirmation.
+API Documentation
+https://readiness-api.onrender.com/docs
 
-POST /personnel/
+Live API
+https://readiness-api.onrender.com
+
+Swagger UI allows you to test all endpoints directly from the browser.
+
+### Health Check
+
+**GET /**
+
+Returns a basic confirmation that the service is running.
+
+---
+
+### Create Personnel Record
+
+**POST /personnel/**
 
 Creates a new personnel readiness record.
 
-Request Body
-{
-  "name": "Jason Graff",
-  "unit": "JBMDL",
-  "certification_status": "GREEN"
-}
-Response
-{
-  "name": "Jason Graff",
-  "unit": "JBMDL",
-  "certification_status": "GREEN"
-}
+#### Request Body
 
-The request body is validated against a strongly-typed Pydantic schema before processing.
+```json
+{
+  "name": "Jason Graff",
+  "unit": "JBMDL",
+  "certification_status": "GREEN"
+}
+```
+Requests are validated against a strongly-typed **Pydantic schema** before processing.
 
 Running the Application
-1. Create virtual environment
+
+Create a virtual environment
+
 python -m venv venv
-2. Activate environment (PowerShell)
+
+Activate environment (PowerShell)
+
 venv\Scripts\Activate.ps1
-3. Install dependencies
+
+Install dependencies
+
 pip install -r requirements.txt
-4. Start development server
+
+Start development server
+
 uvicorn app.main:app --reload
-5. Access interactive documentation
+
+Access interactive documentation
+
 http://127.0.0.1:8000/docs
 Development Workflow
 
@@ -101,7 +130,7 @@ Models define strict request/response schemas
 
 Routes implement endpoint behavior
 
-Main application includes modular routers
+Main application registers modular routers
 
 FastAPI auto-generates OpenAPI documentation
 
@@ -115,9 +144,9 @@ PostgreSQL integration
 
 SQLAlchemy ORM layer
 
-CRUD expansion (GET by ID, PUT, DELETE)
+Full CRUD operations
 
-JWT-based authentication
+JWT authentication
 
 Unit and integration testing (pytest)
 
@@ -131,18 +160,19 @@ Why This Project Matters
 
 This project demonstrates:
 
-Backend system structuring
+Backend service architecture
 
 Type-safe API design
 
-Production-aligned folder architecture
+Production-aligned folder structure
 
-Clean modular expansion strategy
+Modular system expansion strategy
 
 Schema-first API development
 
-It reflects backend engineering fundamentals used in scalable service design.
+These are foundational backend engineering practices used in scalable service design.
 
 Author
 
-Built as part of backend engineering development and production-focused API architecture practice.
+Jason Graff
+Backend-focused software engineering student at Penn State building production-style backend systems with Python and FastAPI.
