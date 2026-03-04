@@ -7,4 +7,8 @@ app = FastAPI(title="Readiness API")
 def root():
     return {"status": "Readiness API running"}
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
 app.include_router(personnel_router)
