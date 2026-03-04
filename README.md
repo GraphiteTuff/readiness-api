@@ -3,11 +3,40 @@
 
 # Readiness API
 
-A modular backend service built with **FastAPI** that models personnel readiness data using schema-driven validation and clean architectural separation.
+A lightweight FastAPI service for storing and retrieving **personal readiness records** in a structured, validated format.
 
-This project demonstrates **production-oriented backend API design**, typed request validation, structured routing, and extensible system design using Python.
+- **Framework:** FastAPI (Python)
+- **Validation:** Pydantic (request/response models)
+- **Docs:** OpenAPI / Swagger UI
+- **Run options:** Local dev (uvicorn) or Docker (`8000:8000`)
 
 ---
+
+## Table of contents
+
+- [What this is](#what-this-is)
+- [Features](#features)
+- [API endpoints](#api-endpoints)
+- [Quickstart](#quickstart)
+  - [Run with Docker](#run-with-docker)
+  - [Run locally](#run-locally)
+- [Request/response examples](#requestresponse-examples)
+- [Project structure](#project-structure)
+- [Development](#development)
+- [Roadmap](#roadmap)
+- [License](#license)
+
+---
+
+## What this is
+
+Readiness API provides a small, production-minded backend that:
+1. accepts readiness-related inputs,
+2. validates them using strict schemas,
+3. persists them (or passes them to a persistence layer),
+4. returns consistent, typed responses.
+
+
 
 ## Project Purpose
 
@@ -15,13 +44,13 @@ Readiness API is a RESTful service designed to manage personnel readiness record
 
 The system is intentionally built using layered architecture principles to simulate real-world backend engineering patterns used in production environments.
 
-### Key Focus Areas
+## Features
 
-- Clean separation of concerns
-- Strong typing and validation
-- Modular routing design
-- Extensible persistence layer
-- Self-documenting API schemas
+- ✅ Schema-first design (Pydantic models for inputs/outputs)
+- ✅ Consistent JSON responses and error handling
+- ✅ Health check endpoint for deployments
+- ✅ Interactive API docs (Swagger + ReDoc)
+- ✅ Docker-friendly (single port: `8000`)
 
 ---
 
@@ -43,17 +72,16 @@ The system is intentionally built using layered architecture principles to simul
 The application follows a layered architecture separating configuration, routing, and domain models.
 
 readiness-api/
-│
-├── app/
-│ ├── main.py
-│ ├── models/
-│ │ └── personnel.py
-│ ├── routes/
-│ │ └── personnel.py
-│ └── database/
-│
-├── requirements.txt
-└── README.md
+├─ app/
+│  ├─ main.py              # FastAPI app entrypoint
+│  ├─ api/                 # Routers (endpoints)
+│  ├─ models/              # Pydantic models (schemas)
+│  ├─ services/            # Business logic
+│  └─ storage/             # Persistence adapters (optional)
+├─ tests/
+├─ Dockerfile
+├─ requirements.txt
+└─ README.md
 
 ---
 
@@ -68,7 +96,33 @@ readiness-api/
 ---
 
 ## API Endpoints
+Adjust route names below if your implementation differs.
 
+| Method | Route           | Description               |
+| -----: | --------------- | ------------------------- |
+|    GET | `/`             | Service info              |
+|    GET | `/health`       | Health check              |
+|   POST | `/records`      | Create a readiness record |
+|    GET | `/records/{id}` | Get a record by id        |
+|    GET | `/docs`         | Swagger UI                |
+|    GET | `/redoc`        | ReDoc                     |
+
+
+---
+## Quickstart
+
+### Run with Docker
+
+docker build -t readiness-api .
+docker run --rm -p 8000:8000 readiness-api
+
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+
+pip install -r requirements.txt
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+--
 ## Live Deployment
 
 - **Live API:** https://readiness-api.onrender.com/
@@ -92,85 +146,23 @@ Creates a new personnel readiness record.
 #### Request Body
 
 ```json
-{
-  "name": "Jason Graff",
-  "unit": "JBMDL",
-  "certification_status": "GREEN"
-}
+{ "status": "ok" }
+
 ```
+curl http://localhost:8000/health
+
 Requests are validated against a strongly-typed **Pydantic schema** before processing.
 
-Running the Application
+## Running the Application
+
+### Run with Docker
+
 Build the image:
 
 ```bash
 docker build -t readiness-api .
-Create a virtual environment
 
-python -m venv venv
 
-Activate environment (PowerShell)
-
-venv\Scripts\Activate.ps1
-
-Install dependencies
-
-pip install -r requirements.txt
-
-Start development server
-
-uvicorn app.main:app --reload
-
-Access interactive documentation
-
-http://127.0.0.1:8000/docs
-Development Workflow
-
-Models define strict request/response schemas
-
-Routes implement endpoint behavior
-
-Main application registers modular routers
-
-FastAPI auto-generates OpenAPI documentation
-
-Uvicorn runs the ASGI application
-
-Roadmap
-
-Planned enhancements include:
-
-PostgreSQL integration
-
-SQLAlchemy ORM layer
-
-Full CRUD operations
-
-JWT authentication
-
-Unit and integration testing (pytest)
-
-Docker containerization
-
-Cloud deployment (AWS / GCP / Azure)
-
-CI/CD pipeline integration
-
-Why This Project Matters
-
-This project demonstrates:
-
-Backend service architecture
-
-Type-safe API design
-
-Production-aligned folder structure
-
-Modular system expansion strategy
-
-Schema-first API development
-
-These are foundational backend engineering practices used in scalable service design.
 
 Author
 
