@@ -79,7 +79,7 @@ readiness-api/
 
 **GET /health**
 
-Returns {"status": "ok"} when the service is healthy.
+Returns `{"status": "ok"}` when the service is healthy.
 
 ---
 
