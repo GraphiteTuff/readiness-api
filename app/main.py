@@ -1,6 +1,10 @@
 from fastapi import FastAPI
-from app.routes import personnel
+from app.routes.personnel import router as personnel_router
 
-app = FastAPI()
+app = FastAPI(title="Readiness API")
 
-app.include_router(personnel.router)
+@app.get("/")
+def root():
+    return {"status": "Readiness API running"}
+
+app.include_router(personnel_router)
