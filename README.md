@@ -1,3 +1,6 @@
+[![Live API](https://img.shields.io/badge/Live%20API-onrender.com-brightgreen)](https://readiness-api.onrender.com/)
+[![Swagger Docs](https://img.shields.io/badge/Docs-Swagger%20UI-blue)](https://readiness-api.onrender.com/docs)
+
 # Readiness API
 
 A modular backend service built with **FastAPI** that models personnel readiness data using schema-driven validation and clean architectural separation.
@@ -66,17 +69,10 @@ readiness-api/
 
 ## API Endpoints
 
-## API Documentation
+## Live Deployment
 
-Interactive API documentation is available at:
-
-API Documentation
-https://readiness-api.onrender.com/docs
-
-Live API
-https://readiness-api.onrender.com
-
-Swagger UI allows you to test all endpoints directly from the browser.
+- **Live API:** https://readiness-api.onrender.com/
+- **Swagger Docs:** https://readiness-api.onrender.com/docs
 
 ### Health Check
 
