@@ -73,12 +73,13 @@ readiness-api/
 
 - **Live API:** https://readiness-api.onrender.com/
 - **Swagger Docs:** https://readiness-api.onrender.com/docs
+- **Health:** https://readiness-api.onrender.com/health
 
 ### Health Check
 
-**GET /**
+**GET /health**
 
-Returns a basic confirmation that the service is running.
+Returns `{"status": "ok"}` when the service is healthy.
 
 ---
 
