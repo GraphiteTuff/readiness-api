@@ -101,7 +101,10 @@ Creates a new personnel readiness record.
 Requests are validated against a strongly-typed **Pydantic schema** before processing.
 
 Running the Application
+Build the image:
 
+```bash
+docker build -t readiness-api .
 Create a virtual environment
 
 python -m venv venv
