@@ -66,8 +66,6 @@ readiness-api/
 
 ## API Endpoints
 
-## API Documentation
-
 ## Live Deployment
 
 - **Live API:** https://readiness-api.onrender.com/
