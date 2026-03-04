@@ -1,3 +1,6 @@
+[![Live API](https://img.shields.io/badge/Live%20API-onrender.com-brightgreen)](https://readiness-api.onrender.com/)
+[![Swagger Docs](https://img.shields.io/badge/Docs-Swagger%20UI-blue)](https://readiness-api.onrender.com/docs)
+
 # Readiness API
 
 A modular backend service built with **FastAPI** that models personnel readiness data using schema-driven validation and clean architectural separation.
