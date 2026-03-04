@@ -1,15 +1,19 @@
-from fastapi import APIRouter
-from app.models.personnel import PersonnelCreate
+from pydantic import BaseModel, Field
+from typing import Optional
+from uuid import UUID
 
-router = APIRouter()
+class PersonnelCreate(BaseModel):
+    name: str = Field(..., min_length=1, max_length=120)
+    rank: Optional[str] = Field(None, max_length=20)
+    unit: Optional[str] = Field(None, max_length=120)
 
-fake_db = []
+class PersonnelUpdate(BaseModel):
+    name: Optional[str] = Field(None, min_length=1, max_length=120)
+    rank: Optional[str] = Field(None, max_length=20)
+    unit: Optional[str] = Field(None, max_length=120)
 
-@router.post("/personnel/")
-def create_personnel(person: PersonnelCreate):
-    fake_db.append(person)
-    return {"message": "Personnel added", "data": person}
-
-@router.get("/personnel/")
-def list_personnel():
-    return fake_db
+class PersonnelOut(BaseModel):
+    id: UUID
+    name: str
+    rank: Optional[str] = None
+    unit: Optional[str] = None
