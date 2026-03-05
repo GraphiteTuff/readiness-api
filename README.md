@@ -113,21 +113,15 @@ Adjust route names below if your implementation differs.
 
 ### Run with Docker
 
+**Build the image:**
+```bash
 docker build -t readiness-api .
-docker run --rm -p 8000:8000 readiness-api
 
-python -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
-
-pip install -r requirements.txt
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-
---
 ## Live Deployment
 
-- **Live API:** https://readiness-api.onrender.com/
-- **Swagger Docs:** https://readiness-api.onrender.com/docs
-- **Health:** https://readiness-api.onrender.com/health
+- **Live API:** [readiness-api.onrender.com](https://readiness-api.onrender.com/)
+- **Swagger Docs:** [/docs](https://readiness-api.onrender.com/docs)
+- **Health:** [/health](https://readiness-api.onrender.com/health)
 
 ### Health Check
 
@@ -160,7 +154,7 @@ Requests are validated against a strongly-typed **Pydantic schema** before proce
 Build the image:
 
 ```bash
-docker build -t readiness-api .
+
 
 
 
